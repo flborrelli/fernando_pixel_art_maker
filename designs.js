@@ -1,6 +1,5 @@
 // Select color input
 var chooseColor = document.getElementById('colorPicker').value;
-var defaultColor = "#0000ff";
 
 // Select size input
 var size = document.getElementById('sizePicker');
@@ -25,14 +24,9 @@ function makeGrid(height,width) {
         var row = canvas.insertRow(m);
         for (var n = 0; n < width; n++) {
             var column = row.insertCell(n);
-            window.addEventListener("load", startup, false);
-            function startup() {
-                colorPicker = document.querySelector("#colorPicker");
-                colorPicker.value = defaultColor;
-                colorPicker.addEventListener("input", updateFirst, false);
-                colorPicker.addEventListener("change", updateAll, false);
-                colorPicker.select();
-              }
+            column.addEventListener('click', function(e) {
+                var color = chooseColor;
+                e.target.style.backgroundColor = color;
             })
         }
     }
